@@ -63,7 +63,15 @@ function createCar() {
     }, 20);
 }
 
-setTimeout(createCar, randomTime);
+function loopCar() {
+    let randomTime = Math.random() * 6000;
+    setTimeout(() => {
+        createCar();
+        loopCar();
+    }, randomTime);
+}
+
+loopCar();
 
 createCar();
 document.addEventListener('keyup', handleKeyUp);
