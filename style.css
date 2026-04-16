@@ -1,46 +1,96 @@
 body {
+    margin: 0;
     background: black;
+    overflow: hidden;
+}
+
+.game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-family: Arial;
+    font-size: 18px;
+    z-index: 10;
 }
 
 .alien {
     position: absolute;
-    bottom: auto;
-    background-image: url(alien.png);
+    bottom: 0;
+    left: 50px;
     width: 60px;
     height: 60px;
+    background-image: url('../img/alien.png');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .car {
     position: absolute;
     bottom: 0;
-    background-image: url(car.gif);
     width: 60px;
     height: 60px;
-}
-
-.game-over {
-    text-align: center;
-    color: #666;
-    margin: 50px 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-@keyframes slideright {
-    from {
-        background-position: 7000%;
-    }
-    to {
-        background-position: 0%;
-    }
+    background-image: url('../img/car.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .background {
     position: absolute;
-    bottom: 0px;
-    background-image: url('background.gif');
-    background-repeat: repeat-x;
-    animation: slideright 1200s infinite linear;
-    -webkit-animation: slideright 1200s infinite linear;
     width: 100%;
     height: 100%;
+    background-image: url('../img/background.gif');
+    background-repeat: repeat-x;
+    animation: slideright 120s linear infinite;
+}
+
+@keyframes slideright {
+    from { background-position: 7000%; }
+    to { background-position: 0%; }
+}
+
+.game-over-screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    z-index: 20;
+}
+
+.game-over-screen img {
+    width: 200px;
+    max-width: 80%;
+}
+
+.game-over-screen button {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .alien, .car {
+        width: 50px;
+        height: 50px;
+    }
+
+    .score {
+        font-size: 16px;
+    }
 }
